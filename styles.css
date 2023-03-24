@@ -1,25 +1,45 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #FFFFFF;
 }
 
 .game-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
-    width: 400px;
+    width: 640px;
     margin: 20px auto;
 }
 
 .tile {
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
     background-color: #333;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
-    color: transparent;
-    user-select: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 5px solid #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.tile::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.tile.revealed::before {
+    opacity: 0;
+}
+
+.tile.revealed {
+    pointer-events: none;
 }
